@@ -33,7 +33,6 @@ class MainFragment: Fragment() {
             binding.seven, binding.eight, binding.nine
         )
 
-        // обработка цифр
         numberButtons.forEach { button ->
             button.setOnClickListener {
                 expression += button.text
@@ -41,13 +40,11 @@ class MainFragment: Fragment() {
             }
         }
 
-        // обработка операторов
         val operators = listOf(
             binding.plus, binding.minus, binding.multiply, binding.divison
         )
         operators.forEach { button ->
             button.setOnClickListener {
-                // не даём вставлять подряд два оператора
                 if (expression.isNotEmpty() && expression.last() !in "+-*/") {
                     expression += button.text
                     binding.result.text = expression
@@ -55,13 +52,11 @@ class MainFragment: Fragment() {
             }
         }
 
-        // очистка
         binding.deleteAll.setOnClickListener {
             expression = ""
             binding.result.text = "0"
         }
 
-        // backspace
         binding.back.setOnClickListener {
             if (expression.isNotEmpty()) {
                 expression = expression.dropLast(1)
@@ -69,7 +64,6 @@ class MainFragment: Fragment() {
             }
         }
 
-        // =
         binding.equals.setOnClickListener {
             try {
                 val result = calculator.evaluate(expression)

@@ -8,7 +8,6 @@ class Calculator {
         return evaluatePostfix(postfix)
     }
 
-    // Разделяем строку на числа и операторы
     private fun tokenize(expr: String): List<String> {
         val tokens = mutableListOf<String>()
         var number = ""
@@ -27,7 +26,6 @@ class Calculator {
         return tokens
     }
 
-    // Преобразование инфиксного выражения (4+5*2) → постфиксное (4 5 2 * +)
     private fun infixToPostfix(tokens: List<String>): List<String> {
         val output = mutableListOf<String>()
         val operators = ArrayDeque<String>()
@@ -50,7 +48,6 @@ class Calculator {
         return output
     }
 
-    // Вычисляем постфиксное выражение
     private fun evaluatePostfix(tokens: List<String>): Int {
         val stack = ArrayDeque<Int>()
         for (token in tokens) {
